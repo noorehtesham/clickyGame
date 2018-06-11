@@ -12,6 +12,9 @@ const NavBar = props => (
   <span className="navbar-text text-dark font-weight-bold">
   Top Score: <span>{props.topScore}</span>
 </span>
+<span className="navbar-text text-dark font-weight-bold message">
+  <span>{props.message}</span>
+</span>
 </nav>
 
 )
