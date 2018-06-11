@@ -137,7 +137,7 @@ incrementScore =() => {
       <Wrapper>
       <NavBar score={this.state.score} topscore={this.state.topScore} message={this.state.message}/>
 
-      <Title>Click on an image!</Title>
+      <Title>Don't click on the same image twice!</Title>
       
       <div className = "wrap">
         {this.state.friends.map(friend=> (
