@@ -137,8 +137,10 @@ incrementScore =() => {
       <Wrapper>
       <NavBar score={this.state.score} topscore={this.state.topScore} message={this.state.message}/>
 
-      <Title>Click on an image!</Title>
 
+      <Title>Click on an image!</Title>
+      
+      <div className = "wrap">
         {this.state.friends.map(friend=> (
             <FriendCard
               image={friend.image}
@@ -150,6 +152,7 @@ incrementScore =() => {
               CheckImage = {()=>this.CheckImage(friend.key)}
             />
             )) }
+            </div>
             </Wrapper>
         
     );
