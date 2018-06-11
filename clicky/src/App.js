@@ -137,6 +137,7 @@ incrementScore =() => {
       <Wrapper>
       <NavBar score={this.state.score} topscore={this.state.topScore} message={this.state.message}/>
 
+
       <Title>Click on an image!</Title>
       
       <div className = "wrap">
