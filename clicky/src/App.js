@@ -124,9 +124,7 @@ incrementScore =() => {
     this.setState({score: this.state.score + 1 });
 }
 
-componentDidMount () {
 
-}
 
 
 

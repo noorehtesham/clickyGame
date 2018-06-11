@@ -1,0 +1,17 @@
+nav {
+    background-color: cadetblue;
+}
+.navbar-brand {
+    font-size: 300%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+   
+}
+
+.navbar-text {
+    font-size: 220%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-left: 20%;
+
+}
