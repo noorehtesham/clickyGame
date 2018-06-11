@@ -13,7 +13,8 @@ class App extends React.Component {
     friends,
     score: 0,
     topScore: 0,
-    imageSelected: []
+    imageSelected: [],
+    message: ""
   };
 
   constructor(props) {
@@ -99,12 +100,15 @@ class App extends React.Component {
         this.setState({
           imageSelected: image,
           topScore: this.state.score + 1 > this.state.topScore ? this.state.score + 1 : this.state.topScore,
+          message: "Good job!"
         })
         this.shuffleFriends();
       }
       else {
         this.resetScore();
-        alert("You lost");
+        this.setState({
+          message: "You lost!"
+        })
       }
       
     }
@@ -131,9 +135,9 @@ incrementScore =() => {
   render() {
     return (
       <Wrapper>
-      <NavBar score={this.state.score} topscore={this.state.topScore}/>
+      <NavBar score={this.state.score} topscore={this.state.topScore} message={this.state.message}/>
 
-      <Title>Friends List</Title>
+      <Title>Click on an image!</Title>
 
         {this.state.friends.map(friend=> (
             <FriendCard
