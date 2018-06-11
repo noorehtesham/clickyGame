@@ -1,8 +1,11 @@
 import React from "react";
-import FriendCard from "./components/FriendCard";
-// import Wrapper from "./components/Wrapper";
+// import FriendCard from "./components/FriendCard";
+import Wrapper from "./components/Wrapper";
 import friends from "./friends.json";
 import "./App.css";
+import NavBar from "./components/NavBar";
+import Title from "./components/Title";
+import FriendCard from "./components/FriendCard"
 
 class App extends React.Component {
   state = {
@@ -16,7 +19,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.shuffleFriends = this.shuffleFriends.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
 
   shuffle(array) {
@@ -46,6 +49,8 @@ class App extends React.Component {
     this.setState({score: score});
   }
 
+ 
+
 
   // handleClick(e) {
   //   e.preventDefault();
@@ -69,23 +74,36 @@ class App extends React.Component {
   //     }
   
 
-    
+    calculateTopScore = () => {
+   
+      if (this.state.score > this.state.topScore) {
+        this.setState({
+          topScore: this.state.score
+        })
+        
+      }
+    }
 
 
   CheckImage = (key) => {
       console.log("Clicked");
-      const image = this.state.imageSelected;
+      console.log(key, "this is the key");
+      console.log(this.state.imageSelected, "image selected");
+      let image = this.state.imageSelected;
+
     
       if (image.indexOf(key) === -1) {
+        // let array =[];
+        image.push(key);
         this.incrementScore();
         this.setState({
-          imageSelected: image.key,
-          topscore: this.state.score + 1 > this.state.topscore ? this.state.score + 1 : this.state.topscore,
+          imageSelected: image,
+          topScore: this.state.score + 1 > this.state.topScore ? this.state.score + 1 : this.state.topScore,
         })
         this.shuffleFriends();
       }
       else {
-        resetScore();
+        this.resetScore();
         alert("You lost");
       }
       
@@ -93,10 +111,10 @@ class App extends React.Component {
 
 
 
-resetscore =() => {
+resetScore =() => {
     this.setState({
       score: 0,
-      ImageSelected: []
+      imageSelected: []
     }
     );
  
@@ -106,24 +124,28 @@ incrementScore =() => {
     this.setState({score: this.state.score + 1 });
 }
 
+componentDidMount () {
 
 }
+
+
 
   render() {
     return (
       <Wrapper>
-      <Navbar score={this.state.score} topscore={this.state.topScore}/>
+      <NavBar score={this.state.score} topscore={this.state.topScore}/>
 
-      <h1 className="title">Friends List</h1>
+      <Title>Friends List</Title>
 
         {this.state.friends.map(friend=> (
-            <Card
+            <FriendCard
               image={friend.image}
               points={friend.points}
-              key={friend.id}
+              key={friend.key}
               shuffleFriends={this.shuffleFriends}
               // prop to call score handling function
               scoreHandle = {this.scoreHandle}
+              CheckImage = {()=>this.CheckImage(friend.key)}
             />
             )) }
             </Wrapper>
